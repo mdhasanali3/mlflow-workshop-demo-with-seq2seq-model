@@ -4,8 +4,16 @@ services:
     image: ghcr.io/mlflow/mlflow
     ports:
       - "5000:5000"
-    command: mlflow ui --host 0.0.0.0
+    volumes:
+      - ./:/workspace
+    command: mlflow server --backend-store-uri sqlite:////workspace/mlflow.db --default-artifact-root /workspace/mlartifacts --host 0.0.0.0 --port 5000
   app:
     build: .
     ports:
       - "8000:8000"
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      DEPLOYMENT_ENVIRONMENT: docker-compose
+      DEPLOYMENT_TARGET: docker
+    depends_on:
+      - mlflow

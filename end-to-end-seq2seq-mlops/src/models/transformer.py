@@ -27,13 +27,23 @@ class TransformerSeq2Seq(nn.Module):
         self.fc_out = nn.Linear(d_model, tgt_vocab_size)
 
     def forward(self, src, tgt):
+        src_pad_mask = src.eq(0)
+        tgt_pad_mask = tgt.eq(0)
         src = self.src_embedding(src) * math.sqrt(self.d_model)
         tgt = self.tgt_embedding(tgt) * math.sqrt(self.d_model)
         src = self.pos_encoder(src)
         tgt = self.pos_encoder(tgt)
         # Create masks
-        tgt_mask = nn.Transformer.generate_square_subsequent_mask(tgt.size(1)).to(tgt.device)
-        src_pad_mask = (src == 0).any(dim=-1) if src.dim() > 1 else None  # Simplified
-        tgt_pad_mask = (tgt == 0).any(dim=-1)
-        output = self.transformer(src, tgt, tgt_mask=tgt_mask, src_key_padding_mask=None, tgt_key_padding_mask=tgt_pad_mask)
+        tgt_mask = torch.triu(
+            torch.ones(tgt.size(1), tgt.size(1), device=tgt.device, dtype=torch.bool),
+            diagonal=1,
+        )
+        output = self.transformer(
+            src,
+            tgt,
+            tgt_mask=tgt_mask,
+            src_key_padding_mask=src_pad_mask,
+            tgt_key_padding_mask=tgt_pad_mask,
+            memory_key_padding_mask=src_pad_mask,
+        )
         return self.fc_out(output)

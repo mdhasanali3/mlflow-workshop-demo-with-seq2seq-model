@@ -14,6 +14,31 @@ spec:
     spec:
       containers:
       - name: seq2seq
-        image: seq2seq:latest
+        image: ghcr.io/OWNER/seq2seq-mlops:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
+        env:
+        - name: DEPLOYMENT_ENVIRONMENT
+          value: production
+        - name: DEPLOYMENT_TARGET
+          value: kubernetes
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 20
+          periodSeconds: 20
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "1"
+            memory: "2Gi"

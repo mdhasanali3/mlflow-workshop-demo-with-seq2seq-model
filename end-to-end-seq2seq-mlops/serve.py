@@ -7,6 +7,10 @@ app = FastAPI()
 # Load model from registry (placeholder)
 model = None
 
+@app.get("/health")
+def health():
+    return {"status": "healthy", "model_loaded": model is not None}
+
 @app.post("/predict")
 def predict(text: str):
     return {"translation": "Bonjour le monde"}  # Placeholder
