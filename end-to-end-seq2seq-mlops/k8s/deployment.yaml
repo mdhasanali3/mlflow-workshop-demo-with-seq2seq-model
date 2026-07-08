@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seq2seq-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: seq2seq
+  template:
+    metadata:
+      labels:
+        app: seq2seq
+    spec:
+      containers:
+      - name: seq2seq
+        image: seq2seq:latest
+        ports:
+        - containerPort: 8000

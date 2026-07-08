@@ -1,0 +1,14 @@
+torch 
+torchvision 
+torchaudio --index-url https://download.pytorch.org/whl/cpu
+torchtext
+mlflow
+fastapi
+uvicorn
+matplotlib
+nltk
+sacrebleu
+pandas
+numpy
+tqdm
+sentencepiece
