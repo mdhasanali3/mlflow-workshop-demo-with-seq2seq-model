@@ -27,4 +27,5 @@ if __name__ == "__main__":
     print("Training Transformer...")
     subprocess.run([sys.executable, "-m", "src.trainer.train_transformer"], check=True, cwd=PROJECT_ROOT)
 
-    print("Project ready. Run 'mlflow ui' to view experiments.")
+    print("Project ready.")
+    print("View runs with: mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000")

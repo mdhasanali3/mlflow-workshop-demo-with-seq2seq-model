@@ -1,0 +1,23 @@
+flavors:
+  python_function:
+    config:
+      device: null
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.13.5
+  pytorch:
+    code: null
+    model_data: data
+    pytorch_version: 2.12.1+cpu
+mlflow_version: 3.14.0
+model_id: m-f25fb171290f48b8b46506a84c64a8c1
+model_size_bytes: 14108495
+model_uuid: m-f25fb171290f48b8b46506a84c64a8c1
+name: file:C:/Users/User/OneDrive/Documents/GitHub/mlflow-workshop-demo-with-seq2seq-model/end-to-end-seq2seq-mlops/mlruns/1/models/m-f25fb171290f48b8b46506a84c64a8c1/artifacts
+prompts: null
+run_id: 8d0963f3686f486b9988891183b2cc14
+utc_time_created: '2026-07-08 10:47:35.410846'

@@ -1,0 +1,9 @@
+{
+  "model_type": "Transformer",
+  "tracking_uri": "sqlite:///C:/Users/User/OneDrive/Documents/GitHub/mlflow-workshop-demo-with-seq2seq-model/end-to-end-seq2seq-mlops/mlflow.db",
+  "run_id": "aeaeed99306945a2973da8c97856cbe4",
+  "experiment_id": "1",
+  "training_rows": 5000,
+  "epochs": 3,
+  "final_train_loss": 2.5816834993636646
+}

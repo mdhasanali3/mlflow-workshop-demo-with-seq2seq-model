@@ -1,0 +1,7 @@
+{
+  "model_type": "LSTM",
+  "tracking_uri": "sqlite:///C:/Users/User/OneDrive/Documents/GitHub/mlflow-workshop-demo-with-seq2seq-model/end-to-end-seq2seq-mlops/tmpelb3rpw2/test.db",
+  "run_id": "fed4d73b48f94e8993111db7573ef137",
+  "experiment_id": "1",
+  "training_rows": 5
+}
